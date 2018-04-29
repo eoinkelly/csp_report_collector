@@ -32,11 +32,20 @@ export SECRET_KEY_BASE=some_random_value # run 'mix phx.gen.secret' to create th
 export BASIC_AUTH_REALM="Protected area"
 export BASIC_AUTH_USERNAME="some_username"
 export BASIC_AUTH_PASSWORD="some_password"
+export MAX_NUM_REPORTS_TO_KEEP=1000
 ```
 
 A wrinkle to be aware of is that CSP Reports are submitted with the
 `application/csp-report` MIME-type even though they are just JSON. This app
 gets around that by rewriting the `Content-Type` header in a Plug.
+
+## Maintenance mix tasks
+
+There are some maintenance mix tasks available
+
+```
+mix ecto.purge_old_records # delete all records beyond MAX_NUM_REPORTS_TO_KEEP
+```
 
 ## Background on Content-Security-Policy
 
