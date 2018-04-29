@@ -1,10 +1,7 @@
 defmodule CspReportCollectorWeb.CspReportController do
   use CspReportCollectorWeb, :controller
-  require Logger
 
   def index(conn, params) do
-    Logger.warn("Params: #{inspect(params)}")
-
     report = %CspReportCollector.CspReport{}
     report_changeset = CspReportCollector.CspReport.changeset(report, params["csp-report"])
 
