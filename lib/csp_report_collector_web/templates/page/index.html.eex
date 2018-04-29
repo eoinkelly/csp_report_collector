@@ -1,42 +1,25 @@
-<h1>CSP Reports</h1>
+<div class="container">
+  <h1>CSP Reports</h1>
+  <p>
+    Most recent reports are at the top
+  </p>
 
-<table class="table table-condensed table-responsive table-bordered">
-  <thead>
-    <tr>
-      <th>Blocked Uri</th>
-      <th>Column Number</th>
-      <th>Disposition</th>
-      <th>Document Uri</th>
-      <th>Effective Directive</th>
-      <th>Line Number</th>
-      <th>Original Policy</th>
-      <th>Referrer</th>
-      <th>Script Sample</th>
-      <th>Source File</th>
-      <th>Status Code</th>
-      <th>Violated Directive</th>
-      <th>Inserted At</th>
-      <th>Updated At</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= for report <- @reports do %>
-      <tr>
-        <td><%= report.blocked_uri %></td>
-        <td><%= report.column_number %></td>
-        <td><%= report.disposition %></td>
-        <td><%= report.document_uri %></td>
-        <td><%= report.effective_directive %></td>
-        <td><%= report.line_number %></td>
-        <td><%= report.original_policy %></td>
-        <td><%= report.referrer %></td>
-        <td><%= report.script_sample %></td>
-        <td><%= report.source_file %></td>
-        <td><%= report.status_code %></td>
-        <td><%= report.violated_directive %></td>
-        <td><%= report.inserted_at %></td>
-        <td><%= report.updated_at %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <%= for report <- @reports do %>
+    <pre>
+Document URI: <a href="<%= report.document_uri %>"><%= report.document_uri %></a>
+Source File: <a href="<%= report.source_file %>"><%= report.source_file %></a>
+Inserted At: <%= report.inserted_at %>
+Violated Directive: <%= report.violated_directive %>
+
+Blocked URI: <%= report.blocked_uri %>
+Column Number: <%= report.column_number %>
+Effective Directive: <%= report.effective_directive %>
+Line Number: <%= report.line_number %>
+Original Policy: <%= report.original_policy %>
+Referrer: <a href="<%= report.referrer %>"><%= report.referrer %></a>
+Script Sample: <%= report.script_sample %>
+Status Code: <%= report.status_code %>
+Disposition: <%= report.disposition %>
+    </pre>
+  <% end %>
+</div>
