@@ -29,6 +29,9 @@ export APP_URL_SCHEME=https
 export DATABASE_URL=postgres://db_username:db_password@db_host_name.com:5432/db_name
 export POOL_SIZE=18 # Heroku limits you to 20 connections so 18 leaves a few for migrations/iex etc.
 export SECRET_KEY_BASE=some_random_value # run 'mix phx.gen.secret' to create this
+export BASIC_AUTH_REALM="Protected area"
+export BASIC_AUTH_USERNAME="some_username"
+export BASIC_AUTH_PASSWORD="some_password"
 ```
 
 A wrinkle to be aware of is that CSP Reports are submitted with the

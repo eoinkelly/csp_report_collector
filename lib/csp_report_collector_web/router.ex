@@ -7,6 +7,7 @@ defmodule CspReportCollectorWeb.Router do
     plug(:fetch_flash)
     plug(:protect_from_forgery)
     plug(:put_secure_browser_headers)
+    plug(BasicAuth, use_config: {:csp_report_collector, :my_auth_with_system})
   end
 
   pipeline :api do
