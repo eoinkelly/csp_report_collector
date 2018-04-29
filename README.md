@@ -1,6 +1,6 @@
 # CSP Report Collector
 
-**WORK IN PROGRESS: The UI for browsing reports is not built yet**
+**WARNING: The UI this app presents is super basic and still a work in progress**
 
 This trivial app allows you to collect Content-Security-Policy HTTP header
 violation reports (via `POST /api/csp-report`). These reports are stored in the
