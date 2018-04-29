@@ -10,12 +10,10 @@ defmodule CspReportCollectorWeb.CspReportController do
 
     case CspReportCollector.Repo.insert(report_changeset) do
       {:ok, report} ->
-        Logger.info("Successful save: #{inspect(report)}")
-        render(conn, "index.json", %{status: true})
+        json(conn, %{success: true})
 
       {:error, changeset} ->
-        Logger.error("Failed to save: #{inspect(changeset)}")
-        render(conn, "index.json", %{status: false})
+        json(conn, %{success: false})
     end
   end
 end
