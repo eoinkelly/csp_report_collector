@@ -14,6 +14,8 @@ defmodule CspReportCollector.CspReport do
     field(:source_file, :string)
     field(:status_code, :integer)
     field(:violated_directive, :string)
+
+    timestamps()
   end
 
   def changeset(csp_report, params \\ %{}) do

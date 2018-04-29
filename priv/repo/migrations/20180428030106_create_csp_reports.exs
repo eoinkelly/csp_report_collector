@@ -15,6 +15,8 @@ defmodule CspReportCollector.Repo.Migrations.CreateCspReports do
       add(:source_file, :string)
       add(:status_code, :integer)
       add(:violated_directive, :string)
+
+      timestamps()
     end
   end
 end
