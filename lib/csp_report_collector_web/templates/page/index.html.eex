@@ -1,7 +1,7 @@
 <div class="container">
   <h1>CSP Reports</h1>
   <p>
-    Most recent reports are at the top
+    Showing <%= Enum.count(@reports) %> reports. Most recent at the top.
   </p>
 
   <%= for report <- @reports do %>
@@ -19,7 +19,6 @@ Original Policy: <%= report.original_policy %>
 Referrer: <a href="<%= report.referrer %>"><%= report.referrer %></a>
 Script Sample: <%= report.script_sample %>
 Status Code: <%= report.status_code %>
-Disposition: <%= report.disposition %>
-    </pre>
+Disposition: <%= report.disposition %></pre>
   <% end %>
 </div>
