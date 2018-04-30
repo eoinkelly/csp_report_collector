@@ -1,16 +1,21 @@
 defmodule CspReportCollectorWeb.CspReportController do
   use CspReportCollectorWeb, :controller
 
-  def index(conn, params) do
-    report = %CspReportCollector.CspReport{}
-    report_changeset = CspReportCollector.CspReport.changeset(report, params["csp-report"])
+  alias CspReportCollector.Reporting
 
-    case CspReportCollector.Repo.insert(report_changeset) do
-      {:ok, report} ->
+  def index(conn, params) do
+    case Reporting.create_csp_report(with_underscored_keys(params["csp-report"])) do
+      {:ok, _report} ->
         json(conn, %{success: true})
 
-      {:error, changeset} ->
+      {:error, _changeset} ->
         json(conn, %{success: false})
     end
+  end
+
+  defp with_underscored_keys(attrs) do
+    attrs
+    |> Enum.map(fn {k, v} -> {String.replace(k, ~r/-/, "_", global: true), v} end)
+    |> Map.new()
   end
 end

@@ -1,13 +1,14 @@
-defmodule CspReportCollector.CspReport do
+defmodule CspReportCollector.Reporting.CspReport do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "csp_reports" do
     field(:blocked_uri, :string)
+    field(:column_number, :integer)
     field(:disposition, :string)
     field(:document_uri, :string)
     field(:effective_directive, :string)
     field(:line_number, :integer)
-    field(:column_number, :integer)
     field(:original_policy, :string)
     field(:referrer, :string)
     field(:script_sample, :string)
@@ -18,9 +19,10 @@ defmodule CspReportCollector.CspReport do
     timestamps()
   end
 
-  def changeset(csp_report, params \\ %{}) do
+  @doc false
+  def changeset(csp_report, attrs) do
     csp_report
-    |> Ecto.Changeset.cast(with_underscored_keys(params), [
+    |> Ecto.Changeset.cast(attrs, [
       :blocked_uri,
       :column_number,
       :disposition,
@@ -34,11 +36,5 @@ defmodule CspReportCollector.CspReport do
       :status_code,
       :violated_directive
     ])
-  end
-
-  defp with_underscored_keys(params) do
-    params
-    |> Enum.map(fn {k, v} -> {String.replace(k, ~r/-/, "_", global: true), v} end)
-    |> Map.new()
   end
 end
