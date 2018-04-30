@@ -41,6 +41,8 @@ defmodule CspReportCollector.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:basic_auth, "~> 2.2.2"},
+      {:credo, "~> 0.9.2", only: [:dev, :test], runtime: false},
+      {:inch_ex, "~> 0.5", only: [:dev, :test]},
       {:cowboy, "~> 1.0"}
     ]
   end
