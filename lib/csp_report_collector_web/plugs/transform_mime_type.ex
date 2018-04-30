@@ -1,4 +1,9 @@
 defmodule CspReportCollectorWeb.Plugs.TransformMimeType do
+  @moduledoc """
+  If the HTTP Content-Type header is 'application/csp-report' then this Plug
+  will rewrite it to 'application/json'
+  """
+
   def init(default), do: default
 
   def call(conn, _options) do

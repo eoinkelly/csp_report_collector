@@ -1,4 +1,8 @@
 defmodule CspReportCollector.Reporting.CspReport do
+  @moduledoc """
+  The ecto repo which manages storage for the Reporting context
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 
