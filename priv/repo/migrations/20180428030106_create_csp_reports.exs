@@ -9,7 +9,7 @@ defmodule CspReportCollector.Repo.Migrations.CreateCspReports do
       add(:document_uri, :string)
       add(:effective_directive, :string)
       add(:line_number, :integer)
-      add(:original_policy, :string)
+      add(:original_policy, :text, length: 4096)
       add(:referrer, :string)
       add(:script_sample, :string)
       add(:source_file, :string)
