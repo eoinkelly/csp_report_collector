@@ -10,6 +10,8 @@ defmodule CspReportCollector.Application do
 
     # Define workers and child supervisors to be supervised
     children = [
+      # Start a task supervisor
+      supervisor(Task.Supervisor, [[name: CspReportCollector.TaskSupervisor]]),
       # Start the Ecto repository
       supervisor(CspReportCollector.Repo, []),
       # Start the endpoint when the application starts

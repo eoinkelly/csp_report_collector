@@ -76,6 +76,27 @@ defmodule CspReportCollector.Reporting do
   end
 
   @doc """
+  Creates a csp_report in an async task.
+
+  This can never show you a useful error.
+
+  ## Examples
+
+      iex> create_csp_report_async(%{field: value})
+      {:ok}
+
+  """
+  def create_csp_report_async(attrs \\ %{}) do
+    Task.Supervisor.async_nolink(CspReportCollector.TaskSupervisor, fn ->
+      %CspReport{}
+      |> CspReport.changeset(attrs)
+      |> Repo.insert()
+    end)
+
+    {:ok}
+  end
+
+  @doc """
   Updates a csp_report.
 
   ## Examples

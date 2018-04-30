@@ -4,13 +4,8 @@ defmodule CspReportCollectorWeb.CspReportController do
   alias CspReportCollector.Reporting
 
   def index(conn, params) do
-    case Reporting.create_csp_report(with_underscored_keys(params["csp-report"])) do
-      {:ok, _report} ->
-        json(conn, %{success: true})
-
-      {:error, _changeset} ->
-        json(conn, %{success: false})
-    end
+    {:ok} = Reporting.create_csp_report_async(with_underscored_keys(params["csp-report"]))
+    json(conn, %{report_accepted: true})
   end
 
   defp with_underscored_keys(attrs) do
