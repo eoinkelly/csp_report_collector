@@ -4,6 +4,7 @@
 /deps
 /*.ez
 .envrc
+/docs
 
 # Generated on crash by the VM
 erl_crash.dump
